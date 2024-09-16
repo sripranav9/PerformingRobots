@@ -1,7 +1,7 @@
 Hi there, this is my journal where I share continuous updates and insights about our robot's performance and advancements.
 
 ### 17 November 2024
-
+(Link to the [murder mystery collaborative outline](https://docs.google.com/document/d/14n8aM1Zh9eJmkvJriH-87WQnF9FcQNhilrOcNERecpM/edit))
 #### Character Description: Colonel Mustard
 
 Colonel Mustard is a former war profiteer who sold the radios out of military planes. He’s deeply ashamed of what he did and pays the blackmailer everything he has in order to keep his personal shame out of the papers. His chauffeur during the war informed Mr. Boddy about what he did, and in one of the versions, he murders him for it after suggesting everyone split up into pairs and search the house ([source](https://www.cinemablend.com/new/Every-Single-Character-Clue-Ordered-By-Greatness-40549.html)).
