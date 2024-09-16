@@ -9,7 +9,8 @@ Colonel Mustard is a former war profiteer who sold the radios out of military pl
 
 Inspiration             |  Sketch
 :-------------------------:|:-------------------------:
-![]()  |  ![]()
+![Inspiration](https://github.com/user-attachments/assets/0996bf9d-ba4a-4009-b805-d0f7615423eb) |  ![Sketch](https://github.com/user-attachments/assets/7eb58e74-d60e-45cb-a395-bb06a6bb5954)
+
 
 
 - Special Features:
