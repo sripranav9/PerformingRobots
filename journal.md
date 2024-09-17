@@ -1,5 +1,10 @@
 Hi there, this is my journal where I share continuous updates and insights about our robot's performance and advancements.
 
+### 18 November 2024
+Ahsen and I came together to discuss and agree on a single character as we both had 2 inidivual characters. We agreed on Mrs. Peacock as she has a great potential to evoke strong feelings amongst the audience.
+
+All the details can be found in Ahsen's journal.md found [here](https://github.com/ahsen10s/PerformingRobots/blob/main/journal.md)
+
 ### 17 November 2024
 (Link to the [murder mystery collaborative outline](https://docs.google.com/document/d/14n8aM1Zh9eJmkvJriH-87WQnF9FcQNhilrOcNERecpM/edit))
 #### Character Description: Colonel Mustard
