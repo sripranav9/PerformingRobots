@@ -20,7 +20,7 @@ Here are a few images of our process:
   </tr>
 </table>
 
-A few other images can be found on Ahsen's Repo [linked here]([url](https://github.com/user-attachments/assets/d0cf80e0-f65c-435b-bce2-6f151f531a35)).
+A few other images can be found on Ahsen's Repo [linked here](https://github.com/user-attachments/assets/d0cf80e0-f65c-435b-bce2-6f151f531a35).
 
 ### 18 November 2024
 Ahsen and I came together to discuss and agree on a single character as we both had 2 inidivual characters. We agreed on Mrs. Peacock as she has a great potential to evoke strong feelings amongst the audience.
