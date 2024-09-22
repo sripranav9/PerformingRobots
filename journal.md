@@ -1,4 +1,5 @@
 **Group: Ahsen Saaim, Sri Pranav Srivatsavai**
+
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements.
 
 ### 19 November 2024
