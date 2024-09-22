@@ -9,6 +9,18 @@ In the work area, we have used the wooden plank as the base (given to us by the 
 
 Here are a few images of our process:
 
+<table border="0">
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/49dbada9-49cf-4c59-9b44-a2c4986d618b" width="400"/></td>
+    <td><img src="https://github.com/user-attachments/assets/af082eea-ebe2-4135-8c6e-b4369ae4e312" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/f973a1f7-af9b-419b-86cf-a6c8d528f70f" width="400"/></td>
+    <td><img src="https://github.com/user-attachments/assets/d0cf80e0-f65c-435b-bce2-6f151f531a35" width="400"/></td>
+  </tr>
+</table>
+
+
 ### 18 November 2024
 Ahsen and I came together to discuss and agree on a single character as we both had 2 inidivual characters. We agreed on Mrs. Peacock as she has a great potential to evoke strong feelings amongst the audience.
 
