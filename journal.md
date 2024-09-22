@@ -1,5 +1,14 @@
 Hi there, this is my journal where I share continuous updates and insights about our robot's performance and advancements.
 
+### 19 November 2024
+**We started building the base of our robot!**
+
+During the class on Thursday, we were guided by Prof. Shiloh to build the base of our robots. Using our previous knowledge of soldering, we have soldered and extended the motors' wires, and then proceeded to attach the hubs and other parts to get the motors with their wheels ready. 
+
+In the work area, we have used the wooden plank as the base (given to us by the Professor) and mounted these motors onto it. There was a lot of back and forth with regard to what to screw/fit first, but we finally understood the assignment. We then measured the plank and planned the holes to drill. After drilling, we have managed to attach 2 motors, and now need to attach the _____. 
+
+Here are a few images of our process:
+
 ### 18 November 2024
 Ahsen and I came together to discuss and agree on a single character as we both had 2 inidivual characters. We agreed on Mrs. Peacock as she has a great potential to evoke strong feelings amongst the audience.
 
