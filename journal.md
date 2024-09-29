@@ -5,7 +5,9 @@ Hi there, this is our journal where we share continuous updates and insights abo
 ### 26 September 2024
 **Continuing building the base of our robot**
 
-We measured exactly how much leeway the robot movement should have to navigate the ups and downs on the ground (especially in the Black Box and while exiting the IM Lab) – this can be handled by giving the casters a height slightly lower than that of the wheels powered by the motors.
+We measured exactly how much leeway the angle of the wheels and casters of the robot base must have to navigate the ups and downs on the ground (especially in the Black Box and while exiting the IM Lab) – this can be handled by giving the casters a height slightly lower than that of the wheels powered by the motors. We used screws in this process instead of nuts and bolts in the previous process, as the wood was quite thick and we would need extremely long nuts if we were to use them.
+
+The next step was to drill a hole in the center for the wires from the motors to be accessible from the top. We then marked out where the arduino, battery, and the motor driver are going to rest. The next steps are to continue working on drilling the holes and using zip ties to hold the battery in place, and screwing the motor driver and the arduino to the wooden base.
 
 Here are a few images of our process:
 
