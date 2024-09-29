@@ -2,7 +2,25 @@
 
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements. <hr>
 
-### 19 November 2024
+### 26 September 2024
+**Continuing building the base of our robot**
+
+We measured exactly how much leeway the robot movement should have to navigate the ups and downs on the ground (especially in the Black Box and while exiting the IM Lab) – this can be handled by giving the casters a height slightly lower than that of the wheels powered by the motors.
+
+Here are a few images of our process:
+
+<table border="0">
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/abc94885-f30c-472b-a6a5-218f4dd4b81d" width="400"/></td>
+    <td><img src="https://github.com/user-attachments/assets/e42bcd12-b3a0-4e22-b60c-a97c637fa342" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/8a901c86-575b-46d8-83d2-a39d279a7e08" width="400"/></td>
+    <td><img src="https://github.com/user-attachments/assets/a3cc1140-b22b-4b95-994f-fa31c589e686" width="400"/></td>
+  </tr>
+</table>
+
+### 19 September 2024
 **We started building the base of our robot!**
 
 During the class on Thursday, we were guided by Prof. Shiloh to build the base of our robots. Using our previous knowledge of soldering, we have soldered and extended the motors' wires, and then proceeded to attach the hubs and other parts to get the motors with their wheels ready. 
