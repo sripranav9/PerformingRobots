@@ -2,6 +2,18 @@
 
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements. <hr>
 
+### 1 October 2024
+**Questions out of presentations today**
+
+- Linh's Presentation
+  - Thought: She mentioned that Hirata encourages actors not to simply "look happier" but to "move in a certain way" to convey human nature. This idea can be translated to our play and the robots we create. It's not just about obvious facial expressions; voice plays a role, but subtle movements of the hands, ears, and even the eyebrows can also significantly contribute.
+  - Question of mechanical looking robot vs. humanoid robot: I'd prefer to see a mechanical robot and not a humanoid robot. There is also a study by [Konok et al.](https://www.sciencedirect.com/science/article/pii/S0747563217306234?via%3Dihub), where they mention how it only gets difficult for people to accept a robot as it 'looks' more and more human or life-like. If we rather try to convey the same behavior through some other appearance, it's rather easier for people to be comfortable with such social robots.
+
+- Toomie's Presentation
+  - Ishiguro clearly disagrees with Konok et al.'s study, arguing that the more human-like the robots look, they enhance this interaction by creating a better sense of presence and engagement for the user.
+  - The concept of uncanney valley – it's indeed very scary to even think of such robots co-existing with us, especially when they question what the difference is between us and them (the video shown in the presentation).
+    -   But at the same time, how will the next generation look at our current scary future? Will this be a new normal for them as they begin growing up in such environments – will we get there in terms of technology?
+
 ### 26 September 2024
 **Continuing building the base of our robot**
 
