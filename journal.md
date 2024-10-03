@@ -2,6 +2,10 @@
 
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements. <hr>
 
+### 3 October 2024
+
+We continued working on the robot base, and drilled holes for the battery (after carefully marking things on the wooden base). Then, zip ties were used to hold the battery in place: a total of 2 main zip ties one running vertically and the other across. 
+
 ### 1 October 2024
 **Questions out of presentations today**
 
