@@ -2,6 +2,15 @@
 
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements. <hr>
 
+### 24 October 2024
+
+For the basic look and features:
+![EE034A13-2FEE-4435-9E1D-DAABFA0F047F_1_201_a](https://github.com/user-attachments/assets/a718d2e8-07c4-48af-a475-9e01810d007c)
+
+
+For the motors and sensors we envision our robot to have:
+![94BAF098-5D27-4436-94E2-F5692C7BD3FC_1_201_a](https://github.com/user-attachments/assets/56009768-0607-4855-8511-44ee5307c774)
+
 ### 3 October 2024
 
 We continued working on the robot base, and drilled holes for the battery (after carefully marking things on the wooden base). Then, zip ties were used to hold the battery in place: a total of 2 main zip ties one running vertically and the other across. 
