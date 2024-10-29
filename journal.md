@@ -4,7 +4,7 @@ Hi there, this is our journal where we share continuous updates and insights abo
 
 ### 28 October 2024
 
-Please refer to Ahsen's jounral found [here](https://github.com/sripranav9/PerformingRobots/blob/main/journal.md#29-october-2024).
+Please refer to Ahsen's jounral found [here](https://github.com/ahsen10s/PerformingRobots/blob/main/journal.md#29-october-2024).
 
 ### 24 October 2024
 
