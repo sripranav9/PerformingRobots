@@ -2,6 +2,9 @@
 
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements. <hr>
 
+### Continuous Updates
+All the updates after 28th October can be found on [Ahsen's journal linked here](https://github.com/ahsen10s/PerformingRobots/blob/main/journal.md#journal-ahsen-and-pranav)
+
 ### 28 October 2024
 
 Please refer to Ahsen's jounral found [here](https://github.com/ahsen10s/PerformingRobots/blob/main/journal.md#29-october-2024).
