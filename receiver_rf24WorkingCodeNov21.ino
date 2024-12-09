@@ -1,5 +1,6 @@
 /*
    Created by Michael Shiloh, Modified by Pranav & Ahsen: Fall 2024
+   This code has commented out part of the transmitter. For the transmitter's code, please check the other code file in the repo.
 
    Using the nRF24L01 radio module to communicate
    between two Arduinos with much increased reliability following
@@ -325,8 +326,6 @@ void clearData() {
 
 // Additional libraries for graphics on the Neo Pixel Matrix
 #include <Adafruit_NeoPixel.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_NeoMatrix.h>
 #ifndef PSTR
 #define PSTR // Make Arduino Due happy
 #endif
@@ -345,47 +344,31 @@ Adafruit_VS1053_FilePlayer musicPlayer = Adafruit_VS1053_FilePlayer(SHIELD_RESET
 // Connectors for NeoPixels and Servo Motors are labeled
 // M1 - M6 which is not very useful. Here are the pin
 // assignments:
-// M1 = 19 //left servo
-// M2 = 21
+// M1 = 19 // neo pixel
+// M2 = 21 //left servo
 // M3 = 20
 // M4 = 16
 // M5 = 18
 // M6 = 17 //right servo
 
-// Servo motors
-const int NOSE_SERVO_PIN = 20;
+#define LED_PIN 19
+#define LED_COUNT_1 16
+#define LED_COUNT_2 16
 
-
-// Neopixel
-const int NEOPIXELPIN = 18;
-const int NUMPIXELS = 64;
-//#define NEOPIXELPIN 18
-//#define NUMPIXELS 64  // change to fit
-//Adafruit_NeoPixel pixels(NUMPIXELS, NEOPIXELPIN, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(8, 8, NEOPIXELPIN,
-                            NEO_MATRIX_TOP     + NEO_MATRIX_RIGHT +
-                            NEO_MATRIX_COLUMNS + NEO_MATRIX_PROGRESSIVE,
-                            NEO_GRB            + NEO_KHZ800);
-
-Servo nose;  // change names to describe what's moving
-Servo antenna;
-Servo tail;
-Servo grabber;
-Servo disk;
+Adafruit_NeoPixel ring1(LED_COUNT_1, LED_PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel ring2(LED_COUNT_2, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 Servo LeftWing;
 Servo RightWing;
 
-int LeftWingPin = 9;
-int RightWingPin = 10;
+int LeftWingPin = 21;
+int RightWingPin = 17;
 
-// change as per your robot
-const int NOSE_WRINKLE = 45;
-const int NOSE_TWEAK = 90;
-const int TAIL_ANGRY = 0;
-const int TAIL_HAPPY = 180;
-const int GRABBER_RELAX = 0;
-const int GRABBER_GRAB = 180;
+int mappedLeftAngle;
+int mappedRightAngle;
+
+// Function prototype
+void moveServosSlowly(Servo &leftServo, Servo &rightServo, int startAngleLeft, int endAngleLeft, int startAngleRight, int endAngleRight);
 
 void setup() {
   Serial.begin(9600);
@@ -444,46 +427,147 @@ void setupServoMotors() {
   RightWing.attach(RightWingPin);
 
   // resting position
-  int leftAngle = 93;
-  int rightAngle = 96;
-  int mappedLeftAngle;
-  int mappedRightAngle;
+  int leftAngle = 100;
+  int rightAngle = 26;
+
   mappedLeftAngle = map(leftAngle, 0, 270, 0, 180);
   mappedRightAngle = map(rightAngle, 0, 270, 0, 180);
+
   LeftWing.write(mappedLeftAngle);
   RightWing.write(mappedRightAngle);
 }
 
 void setupNeoPixels() {
-  //  pixels.begin();
-  //  pixels.clear();
-  //  pixels.show();
-  matrix.begin();
-  matrix.setTextWrap(false);
-  matrix.setBrightness(40);
-  matrix.setTextColor(matrix.Color(200, 30, 40));
+  ring1.begin();           
+  ring1.show();            
+  ring1.setBrightness(15); 
+  ring2.begin();           
+  ring2.show();            
+  ring2.setBrightness(15); 
 }
 
 void flashNeoPixels() {
-
-  // Using the Matrix library
-  matrix.fillScreen(matrix.Color(0, 255, 0));
-  matrix.show();
-  delay(500);
-  matrix.fillScreen(0);
-  matrix.show();
-
-  //  // all on
-  //  for (int i = 0; i < NUMPIXELS; i++) {  // For each pixel...
-  //    pixels.setPixelColor(i, pixels.Color(0, 100, 0));
-  //  }
-  //  pixels.show();
-  //  delay(500);
-  //
-  //  // all off
-  //  pixels.clear();
-  //  pixels.show();
+  for(int i = 0; i < ring1.numPixels(); i++){
+          // ring.setPixelColor(i, random(255), random(255), random(255), 0);
+          ring1.setPixelColor(i, 255, 255, 255, 0);
+          ring1.show();
+          ring2.setPixelColor(i, 255, 255, 255, 0);
+          ring2.show();
+          delay(50);
+        }
+        delay(150);
+        for(int i = ring1.numPixels()-1; i >= 0; i--){
+          ring1.setPixelColor(i, 0, 0, 0, 0);
+          ring1.show();
+          ring2.setPixelColor(i, 0, 0, 0, 0);
+          ring2.show();
+          delay(50);
+        }
 }
+
+void scaredEyes() {
+  for(int i = 0; i < ring1.numPixels(); i++){
+          // ring.setPixelColor(i, random(255), random(255), random(255), 0);
+          ring1.setPixelColor(i, 138,43,226, 0);
+          ring1.show();
+          ring2.setPixelColor(i, 138,43,226, 0);
+          ring2.show();
+          delay(50);
+        }
+}
+
+void scaredBlinkingEyes() {
+
+    int counter = 0;
+    while (counter != 10) { // Infinite blinking loop
+    // Turn all LEDs to purple
+    for (int i = 0; i < ring1.numPixels(); i++) {
+      ring1.setPixelColor(i, 138, 43, 226); // Purple
+      ring2.setPixelColor(i, 138, 43, 226); // Purple
+    }
+    ring1.show();
+    ring2.show();
+    delay(500); // Keep LEDs on for 500ms
+
+    // Turn all LEDs off
+    for (int i = 0; i < ring1.numPixels(); i++) {
+      ring1.setPixelColor(i, 0, 0, 0); // Off
+      ring2.setPixelColor(i, 0, 0, 0); // Off
+    }
+    ring1.show();
+    ring2.show();
+    delay(500); // Keep LEDs off for 500ms
+    counter++;
+  }
+}
+
+void angryEyes() {
+  for(int i = 0; i < ring1.numPixels(); i++){
+          // ring.setPixelColor(i, random(255), random(255), random(255), 0);
+          ring1.setPixelColor(i, 255, 0, 0, 0);
+          ring1.show();
+          ring2.setPixelColor(i, 255, 0, 0, 0);
+          ring2.show();
+          delay(50);
+        }
+}
+
+void whiteEyes() {
+  ring1.begin();                  
+  ring1.setBrightness(40); 
+  ring2.begin();           
+  ring2.setBrightness(40); 
+
+  // Set all LEDs to white
+  for (int i = 0; i < ring1.numPixels(); i++) {
+    ring1.setPixelColor(i, 255, 255, 255); // Full white
+    ring2.setPixelColor(i, 255, 255, 255); // Full white
+  }
+  ring1.show();     
+  ring2.show();
+}
+
+void closingEyes() {
+  for(int i = ring1.numPixels()-1; i >= 0; i--){
+          ring1.setPixelColor(i, 0, 0, 0, 0);
+          ring1.show();
+          ring2.setPixelColor(i, 0, 0, 0, 0);
+          ring2.show();
+          delay(50);
+        }
+}
+
+void eyesShut() {
+  // Turn all LEDs off
+    for (int i = 0; i < ring1.numPixels(); i++) {
+      ring1.setPixelColor(i, 0, 0, 0); // Off
+      ring2.setPixelColor(i, 0, 0, 0); // Off
+    }
+    ring1.show();
+    ring2.show();
+}
+
+
+void moveServosSlowly(Servo &leftServo, Servo &rightServo, int startAngleLeft, int endAngleLeft, int startAngleRight, int endAngleRight) {
+  int maxSteps = max(abs(endAngleLeft - startAngleLeft), abs(endAngleRight - startAngleRight));
+  
+  for (int step = 0; step <= maxSteps; ++step) {
+    int currentAngleLeft = startAngleLeft + (endAngleLeft - startAngleLeft) * step / maxSteps;
+    int currentAngleRight = startAngleRight + (endAngleRight - startAngleRight) * step / maxSteps;
+    
+    leftServo.write(map(currentAngleLeft, 0, 270, 0, 180));
+    rightServo.write(map(currentAngleRight, 0, 270, 0, 180));
+    
+    delay(50);  // Adjust delay for slower or faster movement
+  }
+  
+  // Ensure final positions are reached
+  leftServo.write(map(endAngleLeft, 0, 270, 0, 180));
+  rightServo.write(map(endAngleRight, 0, 270, 0, 180));
+}
+
+int targetLeftAngle = 100; 
+int targetRightAngle = 26;
 
 void loop() {
   // If there is data, read it,
@@ -497,71 +581,215 @@ void loop() {
     Serial.println();
 
     // Resting angles (hiding behind the robot)
-    int leftAngle = 93;
-    int rightAngle = 96;
-    int mappedLeftAngle;
-    int mappedRightAngle;
+    int leftAngle = 100;
+    int rightAngle = 26;
 
     switch (data.stateNumber) {
       case 0:
-        // tail.write(TAIL_ANGRY);
-        // play track 0
-        // display something on LEDs
-        Serial.print(F("Received 0"));
-        break;
-      case 1:
-        Serial.print(F("moving nose to 180 and drawing rectangle"));
-        nose.write(180);
-
-        matrix.drawRect(2, 2, 5, 5, matrix.Color(200, 90, 30));
-        matrix.show();
-
-        Serial.println(F("Playing track 002"));
-        musicPlayer.startPlayingFile("/track002.mp3");
-
-        break;
-      case 2:
-        Serial.println(F("moving nose to 30"));
-        nose.write(30);
-
-        matrix.drawRect(2, 2, 5, 5, matrix.Color(0, 200, 30));
-        matrix.show();
-
-        Serial.println(F("Playing track 001"));
+        Serial.print(F("1 - Mrs. Peacock enters the scene"));
         musicPlayer.startPlayingFile("/track001.mp3");
+        flashNeoPixels();
+        moveServosSlowly(LeftWing, RightWing, leftAngle, 30, rightAngle, 108); //tail opens
+        whiteEyes();
         break;
+      
+      case 1:
+        Serial.println(F("2 - Mrs. Peacock: What's all this party about"));
+        musicPlayer.startPlayingFile("/track002.mp3");
+        // // // slow tail retract
+        // leftAngle = 30;
+        // rightAngle = 108;
+        // moveServosSlowly(LeftWing, RightWing, leftAngle, targetLeftAngle, rightAngle, targetRightAngle);
+        break;
+      
+      case 2:
+        Serial.println(F("2.5 - Gasp"));
+        musicPlayer.startPlayingFile("/gasp0001.mp3");
+        moveServosSlowly(LeftWing, RightWing, 30, leftAngle, 108, rightAngle); //tail retracts
+        scaredEyes();
+        break;
+
       case 3:
-        // Edited on Nov 17 - Testing servo
-        Serial.println(F("Wings spreading out!"));
-        leftAngle = 30; // 30 is the angle - wings spread out, and 96 is the angle where it's vertical
-        rightAngle = 108; // 150 is the angle - wings spread out, and 96 is the angle where it's vertical
-        // Mapping angles for wider servo range
-        mappedLeftAngle = map(leftAngle, 0, 270, 0, 180);
-        mappedRightAngle = map(rightAngle, 0, 270, 0, 180);
-
-        // Write mapped angles to each servo
-        LeftWing.write(mappedLeftAngle);
-        RightWing.write(mappedRightAngle);
+        Serial.println(F("3 - Get me out of here this instant!"));
+        musicPlayer.playFullFile("gasp0001.mp3"); //blocker function - only proceeds after the full file is played
+        musicPlayer.startPlayingFile("/track003.mp3"); //non-blocker function
         break;
-      case 4:
-        // Edited on Nov 17 - Testing servo
-        Serial.println(F("Wings position normal"));
-        leftAngle = 93; // 30 is the angle - wings spread out, and 96 is the angle where it's vertical
-        rightAngle = 42; // 150 is the angle - wings spread out, and 40 is the angle where it's vertical
-          // Mapping angles for wider servo range
+      
+      case 4: //added
+        Serial.println(F("3.5 - Suspenseful music"));
+        musicPlayer.startPlayingFile("/bgmus001.mp3"); //suspicious music
+        break;
+
+      case 5: //added
+        Serial.println(F("3.9 - gasps!"));
+        musicPlayer.playFullFile("gasp0001.mp3");
+        break;
+
+
+      case 6:
+        Serial.println(F("4 - He's dead!"));
+        musicPlayer.playFullFile("gasp0001.mp3");
+        musicPlayer.startPlayingFile("/track004.mp3");
+        break;
+        
+        //tail opens quickly
+        leftAngle = 30; // 30 is the angle - wings spread out, and 100 is the angle where it's vertical
+        rightAngle = 108; // 150 is the angle - wings spread out, and 26 is the angle where it's vertical
         mappedLeftAngle = map(leftAngle, 0, 270, 0, 180);
         mappedRightAngle = map(rightAngle, 0, 270, 0, 180);
-
-        // Write mapped angles to each servo
         LeftWing.write(mappedLeftAngle);
         RightWing.write(mappedRightAngle);
+
+        scaredBlinkingEyes();
+        scaredEyes();
+        delay(10000);
+        eyesShut();
+        // moveServosSlowly(LeftWing, RightWing, 30, leftAngle, 108, rightAngle); //tail retracts and going into the background
+        break;
+      
+      case 7:
+        Serial.println(F("5 - Why was I called to this madhouse"));
+        musicPlayer.startPlayingFile("/track005.mp3");
+        moveServosSlowly(LeftWing, RightWing, 30, leftAngle, 108, rightAngle); //tail retracts
+        scaredEyes();
+        break;
+
+      case 8:
+        Serial.println(F("6 - Buttler take me somewhere safe"));
+        musicPlayer.startPlayingFile("/track006.mp3");
+        break;
+        
+      case 9:
+        Serial.println(F("7 - Stop standing about then and take me"));
+        musicPlayer.startPlayingFile("/track007.mp3");
+        break;
+
+      case 10:
+        Serial.println(F("8 - Wretched Prison - How do I leave?"));
+        whiteEyes();
+        musicPlayer.playFullFile("/track008.mp3");
+        musicPlayer.startPlayingFile("/bgmus001.mp3"); //suspicious music
+        break;
+
+      case 11:
+        Serial.println(F("9 - Are you hinting at something here?"));
+        musicPlayer.startPlayingFile("/track009.mp3"); 
+        
+        //tail opens quickly
+        leftAngle = 30; // 30 is the angle - wings spread out, and 100 is the angle where it's vertical
+        rightAngle = 108; // 150 is the angle - wings spread out, and 26 is the angle where it's vertical
+        mappedLeftAngle = map(leftAngle, 0, 270, 0, 180);
+        mappedRightAngle = map(rightAngle, 0, 270, 0, 180);
+        LeftWing.write(mappedLeftAngle);
+        RightWing.write(mappedRightAngle);
+
+        angryEyes();
+        break;
+
+      case 12:
+        Serial.println(F("10 - Those payments..., you simpleton"));
+        musicPlayer.startPlayingFile("/track010.mp3");
+        break;
+
+      case 13:
+        Serial.println(F("11 - Back breaking work assigned to you - manslaughter?"));
+        musicPlayer.startPlayingFile("/track011.mp3");
+        moveServosSlowly(LeftWing, RightWing, 30, leftAngle, 108, rightAngle); //tail retracts
+        whiteEyes();
+        break;
+
+      case 14:
+        Serial.println(F("12 - Come up with 100 other reasons - why you're the one"));
+        musicPlayer.startPlayingFile("/track012.mp3");
+        break;
+
+      case 15:
+        Serial.println(F("13 - Overheating? Doctor - suspicous"));
+        musicPlayer.startPlayingFile("/track013.mp3");
+        
+        //tail opens quickly
+        leftAngle = 30; // 30 is the angle - wings spread out, and 100 is the angle where it's vertical
+        rightAngle = 108; // 150 is the angle - wings spread out, and 26 is the angle where it's vertical
+        mappedLeftAngle = map(leftAngle, 0, 270, 0, 180);
+        mappedRightAngle = map(rightAngle, 0, 270, 0, 180);
+        LeftWing.write(mappedLeftAngle);
+        RightWing.write(mappedRightAngle);
+
+        angryEyes();
+        break;
+
+      case 16:
+        Serial.println(F("14 - Overcompensating? Oh darling"));
+        musicPlayer.startPlayingFile("/track014.mp3");
+        whiteEyes();
+        delay(18000);
+        moveServosSlowly(LeftWing, RightWing, 30, leftAngle, 108, rightAngle); //tail retracts
+        break;
+
+      case 17:
+        Serial.println(F("15 - You dare malign me with"));
+        musicPlayer.startPlayingFile("/track015.mp3");
+        
+        //tail opens quickly
+        leftAngle = 30; // 30 is the angle - wings spread out, and 100 is the angle where it's vertical
+        rightAngle = 108; // 150 is the angle - wings spread out, and 26 is the angle where it's vertical
+        mappedLeftAngle = map(leftAngle, 0, 270, 0, 180);
+        mappedRightAngle = map(rightAngle, 0, 270, 0, 180);
+        LeftWing.write(mappedLeftAngle);
+        RightWing.write(mappedRightAngle);
+
+        angryEyes();
+        delay(5000);
+        closingEyes();
+        break;
+
+      case 18:
+        Serial.println(F("15.5 - Suspenseful music"));
+        musicPlayer.startPlayingFile("/bgmus001.mp3"); //suspicious music
+        break;
+
+      case 19:
+        Serial.println(F("15.9 - gasps!"));
+        musicPlayer.playFullFile("gasp0001.mp3");
+        break;
+
+      case 20:
+        Serial.println(F("16 - How dare you? I'm a victim"));
+        musicPlayer.startPlayingFile("/track016.mp3");
+        moveServosSlowly(LeftWing, RightWing, 30, leftAngle, 108, rightAngle); //tail retracts
+        whiteEyes();
+        closingEyes();
+        whiteEyes();
+        break;
+
+      case 21:
+        Serial.println(F("17 - That's right, detective hawk - rookie?"));
+        musicPlayer.startPlayingFile("/track017.mp3");
+        break;
+
+      case 22:
+        Serial.println(F("18 - What are you saying?"));
+        musicPlayer.playFullFile("/gasp0001.mp3");
+        scaredEyes();
+        musicPlayer.startPlayingFile("/track018.mp3");
+        delay(2000);
+        whiteEyes();
+        break;
+
+      case 23:
+        Serial.println(F("18.5 - gasps!"));
+        musicPlayer.playFullFile("gasp0001.mp3");
+        break;
+
+      case 24:
+        Serial.println(F("24 - closing - Do you seriously think we'll buy"));
+        musicPlayer.startPlayingFile("/track019.mp3");
+        moveServosSlowly(LeftWing, RightWing, leftAngle, 30, rightAngle, 108); //tail opens
         break;
 
       default:
         Serial.println(F("Invalid option"));
     }
-
-
 
   }
 }  // end of loop()
