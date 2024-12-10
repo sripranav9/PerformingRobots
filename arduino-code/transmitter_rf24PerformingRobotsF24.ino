@@ -1,4 +1,5 @@
 /*
+   CODE FOR TRANSMITTER
    Created by Michael Shiloh, Modified by Pranav & Ahsen: Fall 2024
 
    Using the nRF24L01 radio module to communicate
