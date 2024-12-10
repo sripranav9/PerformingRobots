@@ -1,6 +1,6 @@
 /*
+   CODE FOR RECEIVER
    Created by Michael Shiloh, Modified by Pranav & Ahsen: Fall 2024
-   This code has commented out part of the transmitter. For the transmitter's code, please check the other code file in the repo.
 
    Using the nRF24L01 radio module to communicate
    between two Arduinos with much increased reliability following
