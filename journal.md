@@ -2,7 +2,20 @@
 
 Hi there, this is our journal where we share continuous updates and insights about our robot's performance and advancements. <hr>
 
-### Continuous Updates
+### 10 December 2024
+It's finally time for the performance and we couldn't be more excited!
+
+![7b715ab2-a4c4-4dc7-a7a7-899f9b1c25d7](https://github.com/user-attachments/assets/68673ad9-11e6-4e5c-ba25-cbd3b89e7a9c)
+
+<p align="center">
+  <!-- Side-by-side horizontal images -->
+  <img src="https://github.com/user-attachments/assets/062fd47c-90fb-4587-bebc-dc485625a024" alt="Horizontal Image 1" height="480">
+  <img src="https://github.com/user-attachments/assets/d0c9708e-410c-427e-bceb-7354362b288c" alt="Horizontal Image 2" height="480">
+</p>
+
+
+
+### Continuous Updates until 3 December 2024
 All the updates after 28th October can be found on [Ahsen's journal linked here](https://github.com/ahsen10s/PerformingRobots/blob/main/journal.md#journal-ahsen-and-pranav)
 
 ### 28 October 2024
